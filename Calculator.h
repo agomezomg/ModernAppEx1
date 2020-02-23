@@ -1,10 +1,13 @@
 #pragma once
+#include <iostream>
 
 class Calculator {
 	private:
 		Calculator();
+		Calculator* instance;
 	public:
 		~Calculator();
+		void nullInstance();
 		Calculator* getInstance();
 		double add(double,double);
 		double sub(double,double);

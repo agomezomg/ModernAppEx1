@@ -1,13 +1,21 @@
 #include "Calculator.h"
 
 Calculator::Calculator() {
+
+}
+
+void Calculator::nullInstance() {
+	this -> instance = NULL;
 }
 
 Calculator::~Calculator() {
 }
 
 Calculator* Calculator::getInstance() {
-	return new Calculator();
+	if(!this -> instance) {
+		this -> instance = new Calculator();
+	}
+	return this -> instance;
 }
 
 double Calculator::add(double l_val, double r_val) {
