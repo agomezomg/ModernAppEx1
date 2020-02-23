@@ -83,9 +83,9 @@ int main() {
 				} else if (singleton_menu_choice == 6) {
 					cout << TAB;
 					cout << "Input base: ";
-                                        cin >> l_val;
+            		cin >> l_val;
 					cout << TAB;
-                                        cout << "2^ " << l_val << " = " << (singleton_ex -> sq(l_val)) << endl;
+                    cout << "2^ " << l_val << " = " << (singleton_ex -> sq(l_val)) << endl;
 				} else if (singleton_menu_choice != 0) {
 					cout << TAB;
 					cout << "That's still not a valid input, try again or input 0 to exit." << endl;
