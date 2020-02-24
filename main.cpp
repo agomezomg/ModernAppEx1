@@ -18,6 +18,14 @@ int main() {
 		cout << "1. Calculator (Singleton)" << endl;
 		cout << "2. Draw a shape! (Factory)" << endl;
 		cout << "3. Create-A-Sim (Builder)" << endl;
+		/*
+			Code progression interrupted by this comment. Just to let you know:
+			1) I type in English because that is my keyboard's default language and the
+			language I actually think in asdfasdfdkl
+			2) I thought we were supposed to do only *three* design patterns because
+			my brain is a piece of fish.
+		*/
+		cout << "4. " << endl;
 		cout << "Type 0 and Enter to exit." << endl;
 		cout << "Input your choice [numbers only]: ";
 		cin >> choice;
