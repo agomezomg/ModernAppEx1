@@ -4,6 +4,8 @@
 #include "Director.h"
 #include "Sim.h"
 #include <vector>
+#include "Data.h"
+#include "Client.h"
 
 #define TAB	"\t\t"
 
@@ -11,6 +13,7 @@ using namespace std;
 
 int main() {
 	vector<Sim*> createdSims;
+	vector<Client*> createdClients;
 	int choice = 0;
 	Calculator* singleton_ex;
 	do {
@@ -179,6 +182,33 @@ int main() {
 					cout << TAB << "Please press 0 to exit." << endl;
 				}
 			} while (sim_pick != 0);
+		} else if (choice == 4) {
+			Data averageTimeLaps;
+			cout << TAB << "----------Register Time Laps----------" << endl;
+			char more = 'y';
+			int count = 0;
+			while (more == 'y' || more == 'Y') {
+				createdClients.push_back(new Client(count));
+				count++;
+				cout << TAB << "Created a client successfully. Create another one? [Y/n] ";
+				cin >> more;
+			}
+
+			for (int i = 0; createdClients.size(); i++) {
+				averageTimeLaps.registerObserver(createdClients.at(i));
+			}
+
+			float timeA, timeB, timeC;
+
+			cout << "Enter time A, time B, time C (separated by spaces): " << endl;
+			cin >> timeA >> timeB >> timeC;
+
+			averageTimeLaps.setState(timeA, timeB, timeC);
+			
+			cout << "Enter time A, time B, time C (separated by spaces): " << endl;
+			cin >> timeA >> timeB >> timeC;
+
+			averageTimeLaps.setState(timeA, timeB, timeC);
 		} else if (choice != 0){
 			cout << "Well that's not a valid input, try again." << endl;
 		}
