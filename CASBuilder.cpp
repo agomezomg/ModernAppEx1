@@ -1,6 +1,6 @@
 #include "CASBuilder.h"
 
-void CASBuilder::setNames() {
+void CASBuilder::pickNames() {
 	string first_name = "";
 	string last_name = "";
 	this -> new_Sim -> setFirstName(first_name);
