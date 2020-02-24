@@ -1,18 +1,23 @@
 #include <iostream>
 #include "Calculator.h"
 #include "Shape.h"
+#include "Director.h"
+#include "Sim.h"
+#include <vector>
+
 #define TAB	"\t\t"
 
 using namespace std;
 
 int main() {
+	vector<Sim*> createdSims;
 	int choice = 0;
 	Calculator* singleton_ex;
 	do {
 		cout << "----------MENU---------" << endl;
-		cout << "1. Calculator (singleton)" << endl;
-		cout << "2. TBD (Factory)" << endl;
-		cout << "3. TBD (TBD)" << endl;
+		cout << "1. Calculator (Singleton)" << endl;
+		cout << "2. Draw a shape! (Factory)" << endl;
+		cout << "3. Create-A-Sim (Builder)" << endl;
 		cout << "Type 0 and Enter to exit." << endl;
 		cout << "Input your choice [numbers only]: ";
 		cin >> choice;
@@ -139,9 +144,33 @@ int main() {
 					} while (fact_action_choice != 0);
 				}
 			} while (fact_menu_choice != 0);
-
 		} else if (choice == 3) {
-			cout << "Can't use this choice yet." << endl;
+			int sim_pick = 0;
+			do {
+				cout << TAB << "----------Create-A-Sim----------" << endl;
+				cout << TAB << "1. Basic Sim: Just your average, regular sim." << endl;
+				cout << TAB << "2. Fairy Sim: Hop on for a magical adventure!." << endl;
+				cout << TAB << "3. Vampire Sim: Sunlight? That's for the weak. Plasma is the way to go." << endl;
+				cout << TAB << "4. View created sims toStrings." << endl;
+				cout << TAB << "Type 0 and Enter to exit." << endl;
+				cout << TAB << "Input your choice, you know the drill: ";
+				cin >> sim_pick;
+				Director* CAS = new Director();
+				if(sim_pick == 1) {
+					createdSims.push_back(CAS -> getBasicSim());
+				} else if (sim_pick == 2) {
+					createdSims.push_back(CAS -> getFairySim());
+				} else if (sim_pick == 3) {
+					createdSims.push_back(CAS -> getVampireSim());
+				} else if (sim_pick == 4) {
+					for (int i = 0; i < createdSims.size(); i++) {
+						cout << "----------SIM #" << (i + 1) << "----------" << endl;
+						cout << createdSims.at(i) -> toString() << endl;
+					}
+				} else if (sim_pick != 0) {
+					cout << TAB << "Please press 0 to exit." << endl;
+				}
+			} while (sim_pick != 0);
 		} else if (choice != 0){
 			cout << "Well that's not a valid input, try again." << endl;
 		}
